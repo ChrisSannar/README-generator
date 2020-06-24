@@ -1,5 +1,6 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 // Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
 
@@ -52,14 +53,28 @@ function writeToFile(fileName, data) {
     fs.writeFileSync('./output/' + fileName, data);
 }
 
+// ***
+const test = {
+    title: 'test',
+    description: 'tested',
+    install: 'npm install',
+    usage: 'npm start',
+    licence: 'GLP',
+    contrib: 'Duders',
+    tests: 'npm test'
+}
+// ***
+
 // function to initialize program
 function init() {
-    inquirer
-        .prompt(questions)
-        .then(answers => {
-            console.log(answers);
-            // writeToFile('README.md', 'testing');
-        });
+    console.log(generateMarkdown(test));
+    // inquirer
+    //     .prompt(questions)
+    //     .then(answers => {
+    //         console.log(answers);
+    //         // writeToFile('README.md', 'testing');
+    //     });
+        // .catch(err => console.error(err));
 }
 
 // function call to initialize program
