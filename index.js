@@ -8,6 +8,16 @@ const generateMarkdown = require('./utils/generateMarkdown');
 const questions = [
     {
         type: 'input',
+        name: 'github',
+        message: 'What is your GitHub profile username?'
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'What is your email?'
+    },
+    {
+        type: 'input',
         name: 'title',
         message: 'What is the title of your project?',
     },
@@ -33,7 +43,7 @@ const questions = [
         name: 'licence',
         message: 'What licence is the project under?',
         default: 'MIT',
-        choices: ['MIT', 'GLP']
+        choices: ['MIT', 'GLP', 'None']
     },
     {
         type: 'input',
@@ -55,6 +65,8 @@ function writeToFile(fileName, data) {
 
 // ***
 const test = {
+    github: 'ChrisSannar',
+    email: 'chris.sannar.dev@gmail.com',
     title: 'test',
     description: 'tested',
     install: 'npm install',
@@ -67,7 +79,7 @@ const test = {
 
 // function to initialize program
 function init() {
-    console.log(generateMarkdown(test));
+    writeToFile('README.md', generateMarkdown(test));
     // inquirer
     //     .prompt(questions)
     //     .then(answers => {
